@@ -1,4 +1,5 @@
 require 'docking_station.rb'
+require 'bike'
 
 describe DockingStation do
 
@@ -42,12 +43,12 @@ describe DockingStation do
   end
 
   describe "broken bike tests" do
-    it "should ask the user whether a bike is broken when returning it" do
-      
-
-
+    it "should not release broken bikes" do
+      broken = Bike.new
+      broken.broken
+      subject.dock(broken)
+      expect{ subject.release_bike }.to raise_error("no bikes available")
     end
-
 
   end
 end

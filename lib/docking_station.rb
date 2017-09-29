@@ -1,7 +1,3 @@
-# in lib/docking_station.rb
-
-# require_relative 'bike'
-
 
 class DockingStation
 
@@ -14,7 +10,7 @@ class DockingStation
   end
 
   def release_bike
-    empty? ? fail("no bikes available") : @bikes.shift
+    bikes_available? ? @bikes.shift : fail("no bikes available")
   end
 
   def dock(bike)
@@ -27,8 +23,8 @@ class DockingStation
     @bikes.size == @capacity
   end
 
-  def empty?
-    @bikes.empty?
+  def bikes_available?
+    !@bikes.select{|bike| bike.working? }.empty?
   end
 
 end
