@@ -5,7 +5,7 @@ describe Bike do
   describe "user declaring a bike is broken" do
 
     it "changes the @working instance variable to false" do
-      subject.broken
+      subject.report_broken
       expect(subject.working?).to eq false
     end
 
